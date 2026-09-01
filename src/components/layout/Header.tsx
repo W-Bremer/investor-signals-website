@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Wordmark } from "@/components/LogoMark";
-import { pauseLenis } from "@/components/motion/SmoothScroll";
 
 const NAV = [
   { href: "/for-startups", label: "For Startups" },
@@ -40,7 +39,6 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    pauseLenis(open);
     document.documentElement.style.overflow = open ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";

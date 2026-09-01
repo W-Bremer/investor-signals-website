@@ -1,8 +1,31 @@
 import { NextResponse } from "next/server";
-import { introductionRequestSchema } from "@/lib/introduction-request";
-import { getSupabase } from "@/lib/supabase";
+import { introductionRequestSchema, type IntroductionRequest } from "@/lib/introduction-request";
 
 export const runtime = "nodejs";
+
+const FRIENDLY_FAILURE =
+  "We could not send your request just now. Please try again shortly.";
+
+function formatEmail(d: IntroductionRequest): string {
+  const kind = d.audience === "startup" ? "Startup raise" : "Fund raise";
+  const lines = [
+    `New introduction request from investorsignals.co`,
+    ``,
+    `Type:        ${kind}`,
+    `Name:        ${d.name}`,
+    `Email:       ${d.email}`,
+    `Company:     ${d.company}`,
+    `Role:        ${d.role}`,
+    `Stage:       ${d.stage}`,
+    `Amount:      ${d.amount}`,
+    `Sector:      ${d.sector}`,
+    `Deck:        ${d.deckUrl || "not provided"}`,
+  ];
+  if (d.notes) {
+    lines.push(``, `Notes:`, d.notes);
+  }
+  return lines.join("\n");
+}
 
 export async function POST(request: Request) {
   let payload: unknown;
@@ -21,40 +44,46 @@ export async function POST(request: Request) {
     );
   }
 
-  // Honeypot filled: pretend success, store nothing.
+  // Honeypot filled: pretend success, send nothing.
   if (parsed.data.website) {
     return NextResponse.json({ ok: true });
   }
 
-  const supabase = getSupabase();
-  if (!supabase) {
-    console.error("request-introduction: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not configured");
-    return NextResponse.json(
-      { ok: false, error: "We could not record your request just now. Please try again shortly." },
-      { status: 503 },
-    );
+  const apiKey = process.env.RESEND_API_KEY;
+  const inbox = process.env.REQUEST_INBOX;
+  if (!apiKey || !inbox) {
+    console.error("request-introduction: RESEND_API_KEY / REQUEST_INBOX not configured");
+    return NextResponse.json({ ok: false, error: FRIENDLY_FAILURE }, { status: 503 });
   }
 
-  const { website: _hp, deckUrl, notes, ...rest } = parsed.data;
-  const { error } = await supabase.from("introduction_requests").insert({
-    audience: rest.audience,
-    name: rest.name,
-    email: rest.email,
-    company: rest.company,
-    role: rest.role,
-    stage: rest.stage,
-    amount: rest.amount,
-    sector: rest.sector,
-    deck_url: deckUrl || null,
-    notes: notes || null,
+  const d = parsed.data;
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: process.env.REQUEST_FROM ?? "Investor Signals Site <onboarding@resend.dev>",
+      to: [inbox],
+      reply_to: d.email,
+      subject: `Introduction request: ${d.company} (${d.audience === "startup" ? "startup" : "fund manager"})`,
+      text: formatEmail(d),
+    }),
+  }).catch((err: unknown) => {
+    console.error("request-introduction: email send threw:", err);
+    return null;
   });
 
-  if (error) {
-    console.error("request-introduction insert failed:", error.message);
-    return NextResponse.json(
-      { ok: false, error: "We could not record your request just now. Please try again shortly." },
-      { status: 500 },
-    );
+  if (!res || !res.ok) {
+    if (res) {
+      console.error(
+        "request-introduction: email send failed:",
+        res.status,
+        await res.text().catch(() => ""),
+      );
+    }
+    return NextResponse.json({ ok: false, error: FRIENDLY_FAILURE }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });

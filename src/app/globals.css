@@ -14,14 +14,6 @@ html {
   scroll-behavior: smooth;
 }
 
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
 body {
   background-color: var(--paper);
   color: var(--ink);

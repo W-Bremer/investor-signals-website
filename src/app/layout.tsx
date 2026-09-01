@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import "./globals.css";
 
 const serif = Source_Serif_4({
@@ -82,7 +81,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <SmoothScroll />
         <Header />
         <main id="main">{children}</main>
         <Footer />

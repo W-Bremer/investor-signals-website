@@ -9,10 +9,10 @@ headlines, restrained motion.
 
 - Next.js 14 (App Router) + TypeScript
 - Tailwind CSS 3
-- Lenis for inertial scrolling; all reveals are hand-rolled
+- Native scrolling; all reveals are hand-rolled
   IntersectionObserver + CSS (no animation framework)
 - Source Serif 4 (headlines) and Source Sans 3 (body) via `next/font`
-- Supabase (server-side only) for storing introduction requests
+- No database. The contact form is delivered by email (Resend)
 
 ## Pages
 
@@ -36,12 +36,11 @@ npm run build
 ## The introduction-request form
 
 Submissions POST to `/api/request-introduction`, are validated with zod,
-and insert into the `introduction_requests` table using the service role
-key (never exposed to the browser). Set `SUPABASE_URL` and
-`SUPABASE_SERVICE_ROLE_KEY` (see `.env.example`) and run
-`supabase/migrations/0002_introduction_requests.sql` once in the Supabase
-SQL editor. Without configuration the API returns a clear error rather
-than silently dropping submissions.
+and are emailed to `REQUEST_INBOX` through Resend using `RESEND_API_KEY`
+(see `.env.example`; keys live only on the server). Each email carries the
+requester's address as reply-to, so replying starts the conversation.
+Without configuration the API returns a clear error rather than silently
+dropping submissions. There is no database.
 
 ## Content rules (from the client brief)
 
