@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHead } from "@/components/sections/SectionHead";
+import { DossierGraphic } from "@/components/graphics/DossierGraphic";
 
 const ITEMS = [
   {
@@ -40,11 +41,18 @@ export function Deliverables() {
   return (
     <section id="engagements" className="scroll-mt-24 border-t border-navy/10 bg-paper-tint">
       <div className="container-edge py-24 md:py-32">
-        <SectionHead
-          label="The engagement"
-          title="What working with us includes"
-          lede="Each engagement combines confirmed introductions with the research and advisory work that helps you convert them. We scope every engagement on your consultation call."
-        />
+        <div className="grid items-center gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <SectionHead
+              label="The engagement"
+              title="What working with us includes"
+              lede="Each engagement combines confirmed introductions with the research and advisory work that helps you convert them. We scope every engagement on your consultation call."
+            />
+          </div>
+          <Reveal delay={200} className="hidden lg:col-span-4 lg:col-start-9 lg:block">
+            <DossierGraphic />
+          </Reveal>
+        </div>
 
         <div className="mt-16 grid gap-x-14 gap-y-12 md:grid-cols-2">
           {ITEMS.map((item, i) => (

@@ -37,6 +37,26 @@ export function AudienceSplit() {
                   aria-hidden
                   className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gold-500 transition-transform duration-500 ease-out group-hover:scale-x-100"
                 />
+                <span aria-hidden className="absolute right-8 top-8 opacity-70 transition-opacity duration-500 group-hover:opacity-100 md:right-10 md:top-10">
+                  {i === 0 ? (
+                    /* A round, building: hairline bars, the last one gold */
+                    <svg width="64" height="52" viewBox="0 0 64 52" fill="none">
+                      <rect x="1" y="33" width="12" height="18" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="17" y="24" width="12" height="27" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="33" y="14" width="12" height="37" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="49" y="1" width="12" height="50" rx="1" fill="#C5A55A" fillOpacity="0.18" stroke="#B08F42" strokeOpacity="0.7" />
+                    </svg>
+                  ) : (
+                    /* An allocation finding its slot */
+                    <svg width="64" height="52" viewBox="0 0 64 52" fill="none">
+                      <rect x="1" y="1" width="18" height="14" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="23" y="1" width="40" height="14" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="1" y="19" width="28" height="14" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                      <rect x="33" y="19" width="30" height="14" rx="1" fill="#C5A55A" fillOpacity="0.18" stroke="#B08F42" strokeOpacity="0.7" />
+                      <rect x="1" y="37" width="46" height="14" rx="1" stroke="#0A1F3F" strokeOpacity="0.25" />
+                    </svg>
+                  )}
+                </span>
                 <div>
                   <p className="eyebrow">{a.kicker}</p>
                   <h3 className="mt-5 font-serif text-display-md font-semibold text-navy">
