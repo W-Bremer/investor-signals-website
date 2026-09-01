@@ -7,17 +7,17 @@ import { Reveal, RuleDraw } from "@/components/motion/Reveal";
 export const metadata: Metadata = {
   title: "For Startups",
   description:
-    "From pre-seed to growth, we introduce founders to angels, family offices, and venture funds whose thesis matches the raise, confirmed before the meeting is booked.",
+    "Warm investor meetings that start with the investor's yes, plus the research and coaching to win them. For founders raising pre-seed to growth.",
 };
 
 const HELP_ITEMS = [
-  "Meet investors whose thesis matches your raise, confirmed before the meeting is booked",
-  "Walk into every meeting prepared, with a cited dossier on the investor in hand",
-  "Sharpen your narrative, deck, and positioning with advisory sessions led by an experienced operator",
-  "Understand your competitive landscape and the gaps your deck needs to answer",
-  "Anticipate the hardest questions investors in your category are asking, with rehearsed answers",
-  "Benchmark your ask against recent comparable rounds in your sector and stage",
-  "Improve meeting to meeting, with feedback on your investor conversations as they progress",
+  "Meet only investors whose thesis fits your round, each meeting accepted before it hits your calendar",
+  "Walk in holding a cited dossier on the person across the table",
+  "Rebuild your narrative and deck with an operator, not a template",
+  "Know your competitive landscape better than the investor asking about it",
+  "Rehearse the ten hardest questions your category is getting right now",
+  "Price your ask against 15 to 30 recent rounds like yours",
+  "Debrief every meeting and get sharper before the next one",
 ];
 
 export default function ForStartupsPage() {
@@ -25,11 +25,11 @@ export default function ForStartupsPage() {
     <>
       <PageHero
         label="For startups"
-        title="Raise from investors who asked to meet you."
-        intro="Fundraising rewards preparation and relationships, and punishes everything else. We bring both. Our network of angels, family offices, and venture funds is signed, mapped, and matched to your raise across stage, check size, sector, geography, and thesis. When you meet an investor through us, they have already read your materials and confirmed they want the conversation."
+        title="Raise like someone who has done this before."
+        intro="Because with us in the room, you have. Our team has sat inside hundreds of raises, and the difference between a funded round and a stalled one is rarely the product. It is who you meet, and how you show up. We fix both: introductions the investor has already said yes to, and the preparation to make each one count."
       />
 
-      <LedgerList label="The work" title="What we help you do" items={HELP_ITEMS} />
+      <LedgerList label="The work" title="What you get from us" items={HELP_ITEMS} />
 
       <section className="border-t border-navy/10 bg-paper-tint">
         <div className="container-edge py-24 md:py-28">
@@ -39,16 +39,17 @@ export default function ForStartupsPage() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-10 max-w-4xl font-serif text-display-md font-medium leading-[1.4] text-navy">
-              Founders from pre-seed through growth who have a real business and
-              a clear raise, and who want fewer, better investor conversations
-              rather than a bigger spray.
+              Pre-seed through growth, with a real business and a clear ask.
+              Founders who would rather have five conversations that matter
+              than five hundred that do not.
             </p>
           </Reveal>
           <Reveal delay={240}>
             <p className="mt-7 max-w-[44rem] font-sans text-[1.0625rem] leading-[1.75] text-navy/70">
-              We also work with mission-driven companies, including medical and
-              scientific ventures, where the right investor cares about the
-              outcome as much as the return.
+              That includes mission-driven and scientific ventures, where the
+              right investor cares about the outcome as much as the return. And
+              if what you actually want is a blast list, we are the wrong firm,
+              and we will tell you so on the call.
             </p>
           </Reveal>
         </div>

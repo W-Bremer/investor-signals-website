@@ -6,17 +6,17 @@ import { ArrowRight } from "@/components/ui/icons";
 const AUDIENCES = [
   {
     kicker: "Founders",
-    title: "For startups",
-    body: "From pre-seed to growth, we introduce founders to angels, family offices, and venture funds whose thesis genuinely matches the raise, including investors motivated by mission as much as return.",
+    title: "Raising pre-seed to growth",
+    body: "You have a real business and a clear ask, and you would rather have five conversations that matter than five hundred that do not. We match your round to angels, family offices, and funds whose thesis actually fits, mission-driven and scientific ventures included.",
     href: "/for-startups",
-    cta: "How we work with founders",
+    cta: "How founders raise with us",
   },
   {
     kicker: "Emerging managers",
-    title: "For fund managers",
-    body: "Emerging managers raising LP capital face the coldest doors in the industry. We open the ones that were already warm: family offices and allocators who have asked to see managers like you.",
+    title: "Raising your first funds",
+    body: "Allocators do not answer cold decks, and nobody will sell you a list that says who is writing checks this quarter. We keep relationships with family offices who tell us what they want to see. When your fund fits, you meet the ones who said yes.",
     href: "/for-fund-managers",
-    cta: "How we work with managers",
+    cta: "How managers raise with us",
   },
 ];
 
@@ -24,7 +24,7 @@ export function AudienceSplit() {
   return (
     <section className="border-t border-navy/10">
       <div className="container-edge py-24 md:py-32">
-        <SectionHead label="Who we serve" title="Two sides of the same room" />
+        <SectionHead label="Who we serve" title="Built for two kinds of raisers" />
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {AUDIENCES.map((a, i) => (

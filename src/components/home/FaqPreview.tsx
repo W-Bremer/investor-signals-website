@@ -11,8 +11,8 @@ export function FaqPreview() {
         <div className="lg:col-span-4">
           <SectionHead
             label="Questions"
-            title="Asked on most first calls"
-            lede="Straight answers to the questions founders and managers ask before working with us."
+            title="You are probably wondering"
+            lede="The questions every founder asks before the first call, answered the way we would answer them on it."
           />
           <Reveal delay={240} className="mt-8">
             <TextLink href="/faq">Read all questions</TextLink>

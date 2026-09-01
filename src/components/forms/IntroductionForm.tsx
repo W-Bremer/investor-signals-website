@@ -86,11 +86,11 @@ export function IntroductionForm() {
     return (
       <div className="rounded-[3px] border border-navy/10 bg-[#FFFEFA] p-10 shadow-note md:p-12">
         <span aria-hidden className="block h-10 w-px bg-gold-500" />
-        <h2 className="mt-8 font-serif text-display-md font-semibold text-navy">Received.</h2>
+        <h2 className="mt-8 font-serif text-display-md font-semibold text-navy">Got it.</h2>
         <p className="mt-5 max-w-md font-sans text-[1.0625rem] leading-[1.75] text-navy/70">
-          We review every request personally and will be in touch to schedule
-          your consultation call. If we are not the right fit, we will say so
-          and point you somewhere better.
+          A person reads every one of these, and yours is in the pile now. We
+          will come back to you to set up the call, and if we are not the fit,
+          we will tell you quickly instead of stringing you along.
         </p>
       </div>
     );

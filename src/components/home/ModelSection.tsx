@@ -6,33 +6,33 @@ const COLUMNS = [
     heading: "What you pay",
     rows: [
       {
-        lead: "One engagement price, agreed up front.",
-        body: "You know the full cost before we begin. It does not change based on how your round goes.",
+        lead: "One flat engagement fee.",
+        body: "Agreed on the first call, before any work starts. It does not move with your round.",
       },
       {
-        lead: "Nothing on your outcome.",
-        body: "No success fees, no percentage of the raise, no equity, no warrants.",
+        lead: "Zero percent of your raise.",
+        body: "No success fees, no commissions, no equity, no warrants. Your cap table stays yours.",
       },
       {
-        lead: "Nothing for introductions that do not happen.",
-        body: "If an investor passes during review, it does not count toward your engagement. That risk is ours.",
+        lead: "Passes are on us.",
+        body: "If an investor declines during review, that introduction does not count toward your engagement. The risk of a no sits on our side of the table.",
       },
     ],
   },
   {
-    heading: "What we will not do",
+    heading: "What we will never do",
     rows: [
       {
-        lead: "No cold outreach in your name.",
-        body: "We never send mass email or LinkedIn sequences on your behalf, and we never spin up lookalike domains.",
+        lead: "Send email pretending to be you.",
+        body: "No mass sequences, no lookalike domains, no outreach in your name. Ever.",
       },
       {
-        lead: "No selling your information.",
-        body: "Your materials go only to investors who have been matched to your raise, and only with your consent.",
+        lead: "Shop your deck around.",
+        body: "Your materials go to matched investors only, and only after you sign off.",
       },
       {
-        lead: "No promises we cannot keep.",
-        body: "We arrange meetings with interested investors. Investment decisions belong to them, and we say so in writing.",
+        lead: "Promise you a closed round.",
+        body: "Anyone who guarantees funding is selling you something else. We arrange the meeting and get you ready to win it. The decision belongs to the investor, and we put that in writing.",
       },
     ],
   },
@@ -45,8 +45,8 @@ export function ModelSection() {
         <SectionHead
           onNavy
           label="Our model"
-          title="Our model, stated plainly"
-          lede="Trust is easier when the incentives are on the table. Here is exactly how we make money, and the lines we will not cross."
+          title="How we get paid, in plain English"
+          lede="You should not have to guess at an advisor’s incentives. Ours fit in six lines."
         />
 
         <div className="mt-16 grid gap-14 md:grid-cols-2 md:gap-10 lg:gap-20">

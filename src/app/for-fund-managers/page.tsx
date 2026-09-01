@@ -6,15 +6,15 @@ import { ClosingCta } from "@/components/sections/ClosingCta";
 export const metadata: Metadata = {
   title: "For Fund Managers",
   description:
-    "We introduce emerging managers to family offices and allocators whose mandate matches the fund, confirmed in advance. LP capital moves on trust.",
+    "LP introductions for emerging managers, made only after the allocator says yes. Family offices and allocators who told us what they want to see.",
 };
 
 const HELP_ITEMS = [
-  "Meet family offices and allocators whose mandate matches your fund, confirmed in advance",
-  "Prepare for each allocator conversation with a briefing on their portfolio and preferences",
-  "Refine your fund narrative, positioning, and materials for an LP audience",
-  "Understand how your terms and track record sit relative to comparable funds",
-  "Run a disciplined process across your engagement, with support between meetings",
+  "Meet family offices and allocators whose mandate fits your fund, confirmed before anything is scheduled",
+  "Get a briefing on each allocator’s portfolio and preferences before you speak",
+  "Sharpen your fund story and materials for an LP audience, which is not a founder audience",
+  "See how your terms and track record stack up against comparable funds",
+  "Run the raise as a process, with support between every meeting",
 ];
 
 export default function ForFundManagersPage() {
@@ -22,11 +22,11 @@ export default function ForFundManagersPage() {
     <>
       <PageHero
         label="For fund managers"
-        title="LP capital moves on trust. Start with introductions built on it."
-        intro="Emerging managers face the hardest cold start in the industry: allocators do not take unsolicited meetings, and databases do not tell you who is actually deploying. We maintain relationships with family offices and allocators who have told us what they want to see. When a manager fits, we make the introduction, and only after the allocator has said yes."
+        title="Your first LPs will not come from a database."
+        intro="Emerging managers get the coldest start in the business. Allocators do not answer unsolicited decks, and the lists everyone is selling go stale faster than they update. LP money moves on trust and timing. Our job is to hand you both: family offices and allocators who told us what they want to back, meeting you because they asked to."
       />
 
-      <LedgerList label="The work" title="What we help you do" items={HELP_ITEMS} />
+      <LedgerList label="The work" title="What you get from us" items={HELP_ITEMS} />
 
       <ClosingCta ctaLabel="Tell us about your fund" ctaHref="/request-an-introduction?about=fund-manager" />
     </>

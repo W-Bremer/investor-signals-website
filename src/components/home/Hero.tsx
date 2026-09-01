@@ -21,19 +21,16 @@ export function Hero() {
       <div className="container-edge grid gap-16 pb-24 pt-36 md:pt-44 lg:grid-cols-12 lg:gap-10 lg:pb-32">
         <div className="lg:col-span-7">
           <p className="hero-fade eyebrow" style={{ "--hf-delay": "150ms" } as React.CSSProperties}>
-            Investor introductions and fundraising advisory
+            Introductions and advisory for serious raises
           </p>
 
           <div className="hero-h1-wrap">
           <h1 className="hero-h1 mt-8 font-serif text-display-xl font-semibold text-navy">
             <span className="hero-line" style={{ "--hl-delay": "250ms" } as React.CSSProperties}>
-              <span>Every introduction</span>
+              <span>Nobody funds</span>
             </span>
             <span className="hero-line" style={{ "--hl-delay": "370ms" } as React.CSSProperties}>
-              <span>we make has already</span>
-            </span>
-            <span className="hero-line" style={{ "--hl-delay": "490ms" } as React.CSSProperties}>
-              <span>been accepted.</span>
+              <span>a cold email.</span>
             </span>
           </h1>
           </div>
@@ -42,19 +39,19 @@ export function Hero() {
             className="hero-fade mt-8 max-w-[36rem] font-sans text-[1.0625rem] leading-[1.75] text-navy/70 md:text-[1.125rem]"
             style={{ "--hf-delay": "820ms" } as React.CSSProperties}
           >
-            We connect founders and fund managers with a private network of
-            angels, family offices, and venture funds, and we prepare you for
-            every room you walk into. No cold outreach in your name. No success
-            fees. Just meetings both sides have said yes to.
+            We put your raise in front of angels, family offices, and venture
+            funds we know personally. They read your deck first. They say yes
+            first. Only then does a meeting touch your calendar. Nothing goes
+            out in your name, and we take no cut of your round.
           </p>
 
           <div
             className="hero-fade mt-10 flex flex-wrap items-center gap-x-9 gap-y-5"
             style={{ "--hf-delay": "980ms" } as React.CSSProperties}
           >
-            <Button href="/request-an-introduction">Request an Introduction</Button>
-            <TextLink href="#process" arrow="down">
-              See how a meeting is confirmed
+            <Button href="/request-an-introduction">Tell us about your raise</Button>
+            <TextLink href="#engagements" arrow="down">
+              See everything you get
             </TextLink>
           </div>
         </div>

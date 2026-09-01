@@ -2,27 +2,27 @@ export type FaqItem = { q: string; a: string };
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "How is this different from an outreach agency?",
-    a: "Outreach agencies send cold messages at volume and count replies. We work from a private network of investors who joined by agreement, match them to your raise, and only book a meeting after the investor has reviewed your materials and said yes. Nothing goes out in your name, ever.",
+    q: "How are you different from an outreach agency?",
+    a: "Agencies rent you a sending domain and a spreadsheet, then count replies. We do not send anything in your name. We match your raise against investors we actually know, and a meeting only exists once the investor has read your deck and asked for it.",
   },
   {
-    q: "Do you guarantee funding?",
-    a: "No, and you should be careful with anyone who does. We arrange confirmed meetings with matched investors and prepare you to win them. Investment decisions always belong to the investor.",
+    q: "Do you guarantee we raise?",
+    a: "No. Nobody honest does. What we control is who you meet and how prepared you are when you meet them. The check is always the investor’s call, and we put that in writing.",
   },
   {
-    q: "How do you charge?",
-    a: "Every engagement is scoped and priced on your consultation call, agreed up front, and never tied to your outcome. We take no success fees, no commissions, and no equity.",
+    q: "What does it cost?",
+    a: "One flat fee, scoped on your first call and agreed before we start. Not a percentage, not equity. It does not change whether your round closes in six weeks or six months, and we discuss the number on the call rather than on a pricing page.",
   },
   {
-    q: "Who is in the network?",
-    a: "Angels, family offices, and venture funds, along with the allocators who review emerging managers. Every one of them joined by agreement, and we know their check sizes, stages, sectors, and how they decide. We do not publish names. Discretion is part of why they take our calls.",
+    q: "Who is actually in the network?",
+    a: "Angels, family offices, venture funds, and the allocators who back emerging managers. Every one of them joined by agreement and told us what they want to see. We do not publish names, and the people in it prefer it that way.",
   },
   {
-    q: "What do you need from us to start?",
-    a: "Your deck, a short intake call, and honesty about where the raise stands. We do the rest.",
+    q: "What do you need to get started?",
+    a: "A deck, one short call, and straight answers about where the round really stands. We handle the rest.",
   },
   {
-    q: "What happens if an investor passes?",
-    a: "Then no meeting happens and it does not count toward your engagement. We would rather tell you an investor is not a fit than put you in a room that wastes your time.",
+    q: "What happens when an investor passes?",
+    a: "Nothing happens, and that is the point. No meeting, no charge against your engagement, no room that wastes an afternoon. We tell you they passed and we tell you why, because the why is usually worth having.",
   },
 ];

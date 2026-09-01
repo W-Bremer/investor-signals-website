@@ -5,24 +5,24 @@ import { SectionHead } from "@/components/sections/SectionHead";
 
 const STEPS = [
   {
-    title: "We learn your raise",
-    body: "A working session and a close read of your materials. Stage, check size, sector, geography, and the story behind the numbers.",
+    title: "Tell us the real story",
+    body: "One working session. We read the deck, ask the awkward questions, and get straight on stage, check size, sector, and what this round actually needs to close.",
   },
   {
-    title: "We match against the network",
-    body: "Every investor is scored against your raise across five dimensions. Most will not be a fit, and we tell you that plainly.",
+    title: "We shortlist, and we cut hard",
+    body: "Your raise gets scored against every investor in the network on five dimensions. Most names never make your list, and we tell you why they did not.",
   },
   {
-    title: "The investor says yes first",
-    body: "Matched investors review your materials and confirm interest before anything is scheduled. If they pass, no meeting happens, and it does not count toward your engagement.",
+    title: "The investor reads first",
+    body: "Shortlisted investors get your materials. The interested ones confirm the meeting themselves. The ones who pass cost you nothing.",
   },
   {
-    title: "We prepare you for the room",
-    body: "Before every confirmed meeting you receive a cited dossier on the investor: recent investments, stated thesis, check size, and suggested talking points.",
+    title: "You get the dossier",
+    body: "Before every meeting, one cited page on the person across the table. Recent checks, stated thesis, how they decide, what to lead with.",
   },
   {
-    title: "You take a warm room",
-    body: "You walk into a conversation with someone who has already read your deck and asked for the meeting, and you walk in knowing them better than they expect.",
+    title: "You walk in warm",
+    body: "They asked for this meeting. You know their portfolio better than their last pitch did. That is a very different conversation.",
   },
 ];
 
@@ -62,8 +62,8 @@ export function Process() {
           <div className="lg:sticky lg:top-32">
             <SectionHead
               label="The process"
-              title="How an introduction happens"
-              lede="Slowly, carefully, and only when the fit is real. Most of the work happens before you ever see a calendar invite."
+              title="How a warm room actually happens"
+              lede="Not with a bigger list. With better filters and a lot of homework, most of it done before you ever see a calendar invite."
             />
           </div>
         </div>

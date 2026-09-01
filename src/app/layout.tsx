@@ -22,25 +22,25 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://investorsignals.co
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Investor Signals | Confirmed investor introductions",
+    default: "Investor Signals | Meetings investors ask for",
     template: "%s | Investor Signals",
   },
   description:
-    "We connect founders and fund managers with a private network of angels, family offices, and venture funds. Every introduction is accepted by the investor before it is booked.",
+    "We put your raise in front of angels, family offices, and venture funds we know personally. The investor reads first and says yes first, and only then is a meeting booked. Flat fee, no success fees.",
   openGraph: {
     type: "website",
     siteName: "Investor Signals",
     url: SITE_URL,
-    title: "Investor Signals | Confirmed investor introductions",
+    title: "Investor Signals | Meetings investors ask for",
     description:
-      "Every introduction we make has already been accepted. Investor introductions and fundraising advisory for founders and fund managers.",
+      "Nobody funds a cold email. Warm investor introductions and raise advisory for founders and fund managers, from a network we know personally.",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Investor Signals" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Investor Signals | Confirmed investor introductions",
+    title: "Investor Signals | Meetings investors ask for",
     description:
-      "Every introduction we make has already been accepted. Investor introductions and fundraising advisory for founders and fund managers.",
+      "Nobody funds a cold email. Warm investor introductions and raise advisory for founders and fund managers, from a network we know personally.",
     images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },

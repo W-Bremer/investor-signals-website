@@ -6,45 +6,44 @@ import { Reveal } from "@/components/motion/Reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Why we built Investor Signals: a smaller network, known personally. Fewer introductions, each one accepted in advance. Based in Miami, active in New York.",
+    "The firm we kept wishing existed: a network small enough to know personally, introductions that only exist once the investor says yes, and advisory that treats a raise like a campaign.",
 };
 
 const FACTS = [
-  { figure: "Hundreds", caption: "of startups supported through our team’s prior ventures" },
-  { figure: "Nine figures", caption: "raised across those engagements" },
-  { figure: "Miami", caption: "based here, active in New York" },
+  { figure: "Hundreds", caption: "of raises our team has worked inside" },
+  { figure: "Nine figures", caption: "raised across that work" },
+  { figure: "Miami", caption: "home base, with New York in constant rotation" },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero label="About the firm" title="Why we built it this way" />
+      <PageHero label="About the firm" title="We built the firm we kept wishing existed." />
 
       <section>
         <div className="container-edge grid gap-14 py-20 md:py-28 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal>
               <p className="font-serif text-[1.5rem] font-medium leading-[1.5] text-navy md:text-[1.75rem]">
-                Before Investor Signals, our team spent years inside the
-                fundraising machine, helping hundreds of companies raise. We
-                watched founders pay agencies for warm intros that were cold
-                emails wearing a suit.
+                Our team spent years inside other people&rsquo;s raises,
+                hundreds of them. The same trick kept showing up: founders
+                paying for warm introductions that turned out to be cold email
+                with better fonts.
               </p>
             </Reveal>
             <Reveal delay={140}>
               <p className="mt-9 max-w-[42rem] font-sans text-[1.0625rem] leading-[1.8] text-navy/75">
-                So we built the opposite. A smaller network, known personally.
-                Fewer introductions, each one accepted in advance. Advisory work
-                that treats your raise as a campaign to be won, not a list to be
-                blasted. It is slower work than sending ten thousand emails, and
-                it is the only version of this business we would put our name
-                on.
+                So this firm runs on the opposite bet. A network small enough
+                to know personally. Introductions that only exist once the
+                investor says yes. Research and coaching that treat your raise
+                like a campaign, not a mailing list. It is slower. It converts
+                better. And it is the only version of this business we were
+                willing to put our name on.
               </p>
             </Reveal>
             <Reveal delay={220}>
               <p className="mt-12 border-l-2 border-gold-500 pl-6 font-serif text-[1.3rem] italic leading-relaxed text-navy">
-                We are based in Miami, active in New York, and we answer our own
-                phones.
+                Miami based, active in New York, and we answer our own phones.
               </p>
             </Reveal>
           </div>

@@ -5,35 +5,35 @@ import { DossierGraphic } from "@/components/graphics/DossierGraphic";
 const ITEMS = [
   {
     title: "Confirmed introductions",
-    body: "Curated, double opt-in, and thesis-aligned. Your materials go in ahead of you, and the investor accepts before anything is booked.",
+    body: "Warm, double opt-in meetings with investors matched to your stage, sector, and check size. Each one accepted by the investor before it is booked.",
   },
   {
     title: "Investor prep dossiers",
-    body: "A one-page cited brief before every confirmed meeting: the investor’s recent investments, stated thesis, check size, and suggested talking points.",
+    body: "A cited one-pager on every investor you meet: their recent checks, their stated thesis, and the talking points most likely to land.",
   },
   {
     title: "Investor alignment report",
-    body: "Matched investor profiles organized by thesis fit, check size, and sector focus, so you can see why each name is on your list.",
+    body: "Your shortlist, mapped. Who fits, how well, and exactly why each name made the cut.",
   },
   {
     title: "Competitive landscape report",
-    body: "A fully sourced map of your direct and adjacent competitors, their funding history, and the gaps in your market, structured to strengthen the competition slide in your deck.",
+    body: "Every direct and adjacent competitor, their funding history, and the gap your deck should be claiming. Built to fix the competition slide.",
   },
   {
     title: "Category objection playbook",
-    body: "The ten hardest questions investors in your category are asking right now, with evidence of investors raising them and drafted answers for you to rehearse.",
+    body: "The ten questions investors in your space are asking right now, with receipts, and drafted answers you can rehearse until they are yours.",
   },
   {
     title: "Comparable rounds benchmark",
-    body: "Market data on 15 to 30 recent raises in your sector and stage, covering round size, instrument, and lead investors, so you know exactly where your ask sits.",
+    body: "15 to 30 recent rounds in your sector and stage: size, instrument, who led. Price your ask off data, not guesswork.",
   },
   {
     title: "Advisory sessions",
-    body: "Working sessions with an experienced operator on narrative refinement, pitch optimization, and positioning strategy.",
+    body: "Working sessions with an operator who has been inside hundreds of raises. Deck, narrative, positioning. Blunt notes, real fixes.",
   },
   {
     title: "Executive check-ins",
-    body: "Live feedback on your investor conversations as they progress: call performance review, pitch refinement, and strategic adjustments to improve your close rate.",
+    body: "After your meetings we debrief the tape together: what worked, what stalled, and what to change before the next room.",
   },
 ];
 
@@ -45,8 +45,8 @@ export function Deliverables() {
           <div className="lg:col-span-7">
             <SectionHead
               label="The engagement"
-              title="What working with us includes"
-              lede="Each engagement combines confirmed introductions with the research and advisory work that helps you convert them. We scope every engagement on your consultation call."
+              title="Everything an engagement includes"
+              lede="No mystery retainers. Every engagement is assembled from the pieces below, scoped to your raise on the first call."
             />
           </div>
           <Reveal delay={200} className="hidden lg:col-span-4 lg:col-start-9 lg:block">
@@ -72,10 +72,9 @@ export function Deliverables() {
 
         <Reveal delay={120} className="mt-16 border-l-2 border-gold-500 pl-6">
           <p className="max-w-2xl font-sans text-[0.9375rem] leading-[1.7] text-navy/70">
-            Engagements are scoped individually and priced on the consultation
-            call, agreed up front, and never tied to your outcome. If an
-            investor passes during review, the introduction does not count
-            toward your engagement.
+            Pricing is scoped on the consultation call, fixed before we start,
+            and never tied to how your round ends. If an investor passes during
+            review, that introduction does not count toward your engagement.
           </p>
         </Reveal>
       </div>

@@ -24,8 +24,8 @@ export function Footer() {
               Investor Signals<span className="text-gold-600">.</span>
             </p>
             <p className="mt-5 max-w-sm font-sans text-[0.9375rem] leading-relaxed text-navy/65">
-              Confirmed investor introductions and fundraising advisory for
-              founders and fund managers.
+              Warm investor introductions and raise advisory. The investor says
+              yes before the meeting exists.
             </p>
           </div>
 

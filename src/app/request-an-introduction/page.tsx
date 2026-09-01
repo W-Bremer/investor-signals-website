@@ -6,21 +6,21 @@ import { Reveal } from "@/components/motion/Reveal";
 export const metadata: Metadata = {
   title: "Request an Introduction",
   description:
-    "Tell us about your raise. If we are not the right fit, we will say so in the first call and point you somewhere better.",
+    "Five minutes here, one honest call after. Tell us about your raise and we will tell you whether we can help.",
 };
 
 const NEXT_STEPS = [
   {
-    title: "We read first",
-    body: "Your materials get a close read before we ever reply. No form letters.",
+    title: "A real read",
+    body: "Your deck gets read before we reply. Not skimmed, read.",
   },
   {
-    title: "A consultation call",
-    body: "A working conversation about your raise. Scope and pricing are agreed there, up front, and never tied to your outcome.",
+    title: "One working call",
+    body: "We go through the raise together, scope the engagement, and fix the price before any work starts.",
   },
   {
     title: "A straight answer",
-    body: "If we are not the right fit, we say so on that call and point you somewhere better.",
+    body: "Not the right fit? We will say it on the call and point you at someone better for it.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function RequestIntroductionPage() {
       <PageHero
         label="Request an introduction"
         title="Tell us about your raise."
-        intro="Start with a conversation, not a contract. A few details below, and we will take it from there."
+        intro="Five minutes here, one honest call after. A few details below, and we will take it from there."
       />
 
       <section>

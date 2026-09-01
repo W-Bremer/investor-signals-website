@@ -2,16 +2,16 @@ import { Reveal } from "@/components/motion/Reveal";
 
 const ITEMS = [
   {
-    title: "Built on a decade of raises.",
-    body: "Our team has supported hundreds of startups through prior ventures, with nine figures raised across those engagements.",
+    title: "The yes comes before the meeting.",
+    body: "Every investor we bring you has read your materials and asked for the conversation before anything is scheduled. You never pitch a room that did not want you in it.",
   },
   {
-    title: "A signed, mapped network.",
-    body: "Every investor in our network has joined by agreement. We know their check sizes, stages, sectors, and how they actually decide.",
+    title: "We have sat where you sit.",
+    body: "Our team worked inside hundreds of raises before building this firm, with nine figures raised across that work. We know what a stalled round feels like from the inside.",
   },
   {
-    title: "Advisory, not just access.",
-    body: "Every engagement pairs confirmed introductions with the research, preparation, and coaching to convert them. No success fees, no commissions, no equity.",
+    title: "Flat fee. No cut of your round.",
+    body: "One price, agreed before we start. No success fees, no commissions, no equity. If an investor passes during review, that introduction never counts against you.",
   },
 ];
 

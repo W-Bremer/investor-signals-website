@@ -30,8 +30,8 @@ export default function FaqPage() {
       />
       <PageHero
         label="FAQ"
-        title="Questions we hear on most first calls"
-        intro="If yours is not answered here, ask it on the consultation call. You will get a straight answer there too."
+        title="The questions everyone asks first"
+        intro="If yours is missing, bring it to the call. Straight answers are the house style."
       />
       <section>
         <div className="container-edge py-20 md:py-24">

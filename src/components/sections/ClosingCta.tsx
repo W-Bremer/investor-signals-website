@@ -2,7 +2,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 
 export function ClosingCta({
-  ctaLabel = "Request an Introduction",
+  ctaLabel = "Tell us about your raise",
   ctaHref = "/request-an-introduction",
 }: {
   ctaLabel?: string;
@@ -28,13 +28,13 @@ export function ClosingCta({
         </Reveal>
         <Reveal delay={100}>
           <h2 className="max-w-3xl font-serif text-display-lg font-semibold text-navy">
-            Start with a conversation, not a contract.
+            Bring us the raise. We will tell you the truth about it.
           </h2>
         </Reveal>
         <Reveal delay={200}>
           <p className="mx-auto mt-6 max-w-xl font-sans text-[1.0625rem] leading-[1.75] text-navy/70">
-            Tell us about your raise. If we are not the right fit, we will say
-            so in the first call and point you somewhere better.
+            One call. If we can help, you will know exactly how before it ends.
+            If we cannot, we will say so and point you to someone who can.
           </p>
         </Reveal>
         <Reveal delay={300}>
