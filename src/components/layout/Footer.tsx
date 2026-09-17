@@ -11,7 +11,6 @@ const NAVIGATE = [
 
 const LEGAL = [
   { href: "/request-an-introduction", label: "Contact" },
-  { href: "https://investor-signals-directory.vercel.app", label: "Startup Directory", external: true },
   { href: "https://luma.com/3oei0twd", label: "Events", external: true },
   { href: "/disclosures", label: "Disclosures" },
   { href: "/privacy", label: "Privacy" },

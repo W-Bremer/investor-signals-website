@@ -11,7 +11,6 @@ const NAV = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
-  { href: "https://investor-signals-directory.vercel.app", label: "Directory", external: true },
 ] as { href: string; label: string; external?: boolean }[];
 
 export function Header() {
