@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
+import { SectionHead } from "@/components/sections/SectionHead";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { Reveal } from "@/components/motion/Reveal";
+import { TeamGrid } from "@/components/about/TeamGrid";
+import { ArrowRight } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "About",
@@ -66,6 +70,46 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-navy/10 bg-paper-tint">
+        <div className="container-edge py-20 md:py-28">
+          <SectionHead
+            label="The team"
+            title="The people behind the network"
+            lede="Every introduction we make carries one of these names with it. That is the whole model: a network built by hand, by people who answer for it."
+            className="mb-16"
+          />
+          <TeamGrid />
+        </div>
+      </section>
+
+      <section className="border-t border-navy/10">
+        <div className="container-edge py-16 md:py-20">
+          <Reveal>
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="eyebrow">From the team</p>
+                <h2 className="mt-5 max-w-2xl font-serif text-display-sm font-semibold text-navy">
+                  We published our entire outreach playbook. Every step, nothing
+                  held back.
+                </h2>
+                <p className="mt-4 max-w-[38rem] font-sans text-[0.9375rem] leading-[1.7] text-navy/65">
+                  If you are going to run investor outreach yourself, this is
+                  how we would do it: the segmentation, the messaging, the
+                  follow-up cadence, and the honest numbers behind all of it.
+                </p>
+              </div>
+              <Link
+                href="/blog/the-investor-relations-playbook"
+                className="link-arrow group inline-flex shrink-0 items-center gap-3 font-sans text-[0.9375rem] font-semibold text-navy transition-colors duration-300 hover:text-navy-600"
+              >
+                <span className="link-quiet">Read the playbook</span>
+                <ArrowRight className="arrow-slide h-[0.8em] w-[0.8em] text-gold-600" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

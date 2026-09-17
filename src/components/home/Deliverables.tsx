@@ -28,12 +28,16 @@ const ITEMS = [
     body: "15 to 30 recent rounds in your sector and stage: size, instrument, who led. Price your ask off data, not guesswork.",
   },
   {
-    title: "Advisory sessions",
-    body: "Working sessions with an operator who has been inside hundreds of raises. Deck, narrative, positioning. Blunt notes, real fixes.",
+    title: "Advisory sessions with Jordan Goldberg",
+    body: "Working sessions with our advisory partner: behavioral scientist, multi-exit founder, and fund manager. Deck, narrative, positioning. Blunt notes, real fixes.",
   },
   {
-    title: "Executive check-ins",
-    body: "After your meetings we debrief the tape together: what worked, what stalled, and what to change before the next room.",
+    title: "Bi-weekly executive check-ins",
+    body: "Every other week our executive team debriefs the tape with you: how your investor conversations performed, what stalled, and what to change before the next room.",
+  },
+  {
+    title: "Async support throughout",
+    body: "Questions between sessions get answered between sessions. Our team stays reachable across your full engagement, not just on scheduled calls.",
   },
 ];
 

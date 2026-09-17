@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { POSTS } from "@/lib/posts";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://investorsignals.co";
 
@@ -7,7 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/for-startups",
     "/for-fund-managers",
+    "/case-studies",
     "/about",
+    "/blog",
+    ...POSTS.map((post) => `/blog/${post.slug}`),
     "/faq",
     "/request-an-introduction",
     "/disclosures",

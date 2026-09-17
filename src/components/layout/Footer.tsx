@@ -3,16 +3,20 @@ import Link from "next/link";
 const NAVIGATE = [
   { href: "/for-startups", label: "For Startups" },
   { href: "/for-fund-managers", label: "For Fund Managers" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
 ];
 
 const LEGAL = [
+  { href: "/request-an-introduction", label: "Contact" },
+  { href: "https://investor-signals-directory.vercel.app", label: "Startup Directory", external: true },
+  { href: "https://luma.com/3oei0twd", label: "Events", external: true },
   { href: "/disclosures", label: "Disclosures" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
-  { href: "/request-an-introduction", label: "Contact" },
-];
+] as { href: string; label: string; external?: boolean }[];
 
 export function Footer() {
   return (
@@ -45,13 +49,26 @@ export function Footer() {
           <div className="md:col-span-3">
             <p className="eyebrow mb-5">The firm</p>
             <ul className="space-y-3">
-              {LEGAL.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="link-quiet font-sans text-[0.9375rem] text-navy/75 hover:text-navy">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+              {LEGAL.map((l) =>
+                l.external ? (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-quiet font-sans text-[0.9375rem] text-navy/75 hover:text-navy"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={l.href}>
+                    <Link href={l.href} className="link-quiet font-sans text-[0.9375rem] text-navy/75 hover:text-navy">
+                      {l.label}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </div>

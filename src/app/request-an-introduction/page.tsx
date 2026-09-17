@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
 import { IntroductionForm } from "@/components/forms/IntroductionForm";
+import { BookingCalendar } from "@/components/forms/BookingCalendar";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Request an Introduction",
   description:
-    "Five minutes here, one honest call after. Tell us about your raise and we will tell you whether we can help.",
+    "Book your consultation call directly, or tell us about your raise in writing. Either way, we will tell you honestly whether we can help.",
 };
 
 const NEXT_STEPS = [
@@ -30,12 +31,28 @@ export default function RequestIntroductionPage() {
       <PageHero
         label="Request an introduction"
         title="Tell us about your raise."
-        intro="Five minutes here, one honest call after. A few details below, and we will take it from there."
+        intro="Book the consultation call directly below, or write to us first. Either way, one honest conversation and you will know exactly where you stand."
       />
+
+      <section className="border-b border-navy/10 bg-paper-tint">
+        <div className="container-edge py-16 md:py-20">
+          <Reveal>
+            <p className="eyebrow">Schedule your consultation</p>
+            <p className="mt-5 max-w-[42rem] font-sans text-[1rem] leading-[1.75] text-navy/70">
+              Pick a time that works and come as you are. Bring the deck if you
+              have one; bring the questions either way.
+            </p>
+          </Reveal>
+          <Reveal delay={140} className="mx-auto mt-10 max-w-4xl">
+            <BookingCalendar />
+          </Reveal>
+        </div>
+      </section>
 
       <section>
         <div className="container-edge grid gap-16 py-20 md:py-24 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-7">
+            <p className="eyebrow mb-8">Prefer to write first?</p>
             <IntroductionForm />
           </Reveal>
 

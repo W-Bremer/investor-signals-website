@@ -16,13 +16,14 @@ headlines, restrained motion.
 
 ## Pages
 
-`/` home, `/for-startups`, `/for-fund-managers`, `/about`, `/faq`,
-`/request-an-introduction` (form), plus `/disclosures`, `/privacy`,
-`/terms` and a designed 404.
+`/` home, `/for-startups`, `/for-fund-managers`, `/case-studies`,
+`/about` (with the team grid), `/blog` (post registry in
+`src/lib/posts.ts`; the playbook is the first post), `/faq`,
+`/request-an-introduction` (booking calendar + form), plus
+`/disclosures`, `/privacy`, `/terms` and a designed 404.
 
-Case Studies and Advisors pages from the brief are intentionally not
-built yet: their copy, bios, and photography are supplied by the client
-per the content brief.
+The header and footer also link out to the startup directory
+(separate repo/deploy) and the Luma events page.
 
 ## Develop
 

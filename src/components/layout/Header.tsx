@@ -8,9 +8,11 @@ import { Wordmark } from "@/components/LogoMark";
 const NAV = [
   { href: "/for-startups", label: "For Startups" },
   { href: "/for-fund-managers", label: "For Fund Managers" },
+  { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
-];
+  { href: "/blog", label: "Blog" },
+  { href: "https://investor-signals-directory.vercel.app", label: "Directory", external: true },
+] as { href: string; label: string; external?: boolean }[];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,18 +64,32 @@ export function Header() {
           <Wordmark />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`link-quiet font-sans text-[0.9375rem] font-medium transition-colors duration-300 ${
-                pathname === item.href ? "text-navy" : "text-navy/65 hover:text-navy"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+          {NAV.map((item) =>
+            item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-quiet font-sans text-[0.9375rem] font-medium text-navy/65 transition-colors duration-300 hover:text-navy"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`link-quiet font-sans text-[0.9375rem] font-medium transition-colors duration-300 ${
+                  pathname === item.href || pathname.startsWith(`${item.href}/`)
+                    ? "text-navy"
+                    : "text-navy/65 hover:text-navy"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
           <Link
             href="/request-an-introduction"
             className="rounded-[2px] border border-navy/30 px-5 py-2.5 font-sans text-[0.875rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy hover:text-paper"
@@ -112,21 +128,32 @@ export function Header() {
         aria-hidden={!open}
       >
         <div className="container-edge flex flex-1 flex-col justify-center gap-2 pb-16 pt-24">
-          {NAV.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              tabIndex={open ? 0 : -1}
-              className="border-b border-navy/10 py-5 font-serif text-[2rem] leading-tight text-navy transition-all duration-500 ease-out"
-              style={{
-                opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(18px)",
-                transitionDelay: open ? `${120 + i * 60}ms` : "0ms",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV.map((item, i) => {
+            const style = {
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(18px)",
+              transitionDelay: open ? `${120 + i * 60}ms` : "0ms",
+            };
+            const className =
+              "border-b border-navy/10 py-5 font-serif text-[2rem] leading-tight text-navy transition-all duration-500 ease-out";
+            return item.external ? (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabIndex={open ? 0 : -1}
+                className={className}
+                style={style}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link key={item.href} href={item.href} tabIndex={open ? 0 : -1} className={className} style={style}>
+                {item.label}
+              </Link>
+            );
+          })}
           <div
             className="pt-8 transition-all duration-500 ease-out"
             style={{
