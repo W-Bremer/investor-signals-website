@@ -66,6 +66,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       from: process.env.REQUEST_FROM ?? "Investor Signals Site <onboarding@resend.dev>",
       to: [inbox],
+      ...(process.env.REQUEST_CC ? { cc: process.env.REQUEST_CC.split(",").map((s) => s.trim()) } : {}),
       reply_to: d.email,
       subject: `Introduction request: ${d.company} (${d.audience === "startup" ? "startup" : "fund manager"})`,
       text: formatEmail(d),

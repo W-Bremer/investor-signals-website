@@ -5,7 +5,8 @@ export const runtime = "nodejs";
 
 // Meta Lead Ads webhook. Meta calls GET once to verify the callback URL, then
 // POSTs a "leadgen" change for every instant-form submission. We fetch the
-// lead from the Graph API and email it to LEAD_INBOXES so sales can call it.
+// lead from the Graph API and email it to LEAD_INBOXES (cc LEAD_CC) so sales
+// can call it.
 // Returning a non-2xx makes Meta retry the delivery, so a failed email is not
 // a lost lead.
 
@@ -106,8 +107,10 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const inboxes = process.env.LEAD_INBOXES?.split(",").map((s) => s.trim()).filter(Boolean);
-  if (!apiKey || !inboxes?.length || !process.env.META_ACCESS_TOKEN) {
+  const list = (v?: string) => v?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
+  const inboxes = list(process.env.LEAD_INBOXES);
+  const cc = list(process.env.LEAD_CC);
+  if (!apiKey || !inboxes.length || !process.env.META_ACCESS_TOKEN) {
     console.error("meta-leads: RESEND_API_KEY / LEAD_INBOXES / META_ACCESS_TOKEN not configured");
     return NextResponse.json({ ok: false }, { status: 503 });
   }
@@ -133,6 +136,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           from: process.env.REQUEST_FROM ?? "Investor Signals Site <onboarding@resend.dev>",
           to: inboxes,
+          ...(cc.length ? { cc } : {}),
           ...(email.replyTo ? { reply_to: email.replyTo } : {}),
           subject: email.subject,
           text: email.text,
