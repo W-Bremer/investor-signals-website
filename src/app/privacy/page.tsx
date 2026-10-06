@@ -9,13 +9,16 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage label="Legal" title="Privacy" updated="September 2026">
+    <LegalPage label="Legal" title="Privacy" updated="October 2026">
       <LegalSection heading="What we collect">
         <p>
           When you request an introduction, we collect what you give us: your
           name, email, company or fund, role, the shape of your raise, and any
-          materials or links you share, such as a deck. Our site also keeps
-          ordinary server logs.
+          materials or links you share, such as a deck. When you request a
+          spot at one of our events, including through a form on Facebook or
+          Instagram, we collect your name, email, phone number, and how you
+          describe your role. Our site also keeps ordinary server logs and
+          privacy-friendly visit statistics.
         </p>
       </LegalSection>
 
@@ -23,8 +26,9 @@ export default function PrivacyPage() {
         <p>
           We use your information to evaluate fit, to prepare for your
           consultation call, and, if we work together, to match your raise
-          against our network and arrange introductions. That is the whole
-          list.
+          against our network and arrange introductions. If you request an
+          event spot, we use it to call, text, or email you about that event.
+          That is the whole list.
         </p>
       </LegalSection>
 
@@ -32,7 +36,9 @@ export default function PrivacyPage() {
         <p>
           Your materials go only to investors who have been matched to your
           raise, and only with your consent. We do not sell your information,
-          rent it, or trade it. The service providers who host our systems
+          rent it, or trade it. For events we co-host, such as SIGNAL NYC with
+          Synapse Network, your event request is shared with the co-host so
+          they can confirm your spot. The service providers who host our systems
           process data on our behalf and under our instructions.
         </p>
       </LegalSection>
