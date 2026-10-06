@@ -13,24 +13,24 @@ export const PACKAGES_METADATA: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type Feature = { title: string; detail?: string; inline?: boolean };
+export type Feature = { title: string; detail?: string; inline?: boolean };
 
-const DOSSIERS: Feature = {
+export const DOSSIERS: Feature = {
   title: "Investor prep dossiers",
   detail:
     "A one-page cited brief on each investor covering their stated thesis, check size, sector focus, and suggested talking points, delivered before you walk in",
 };
-const LANDSCAPE: Feature = {
+export const LANDSCAPE: Feature = {
   title: "Competitive landscape report",
   detail:
     "A fully sourced map of your direct and adjacent competitors, their funding history, and the gaps in your market, structured to strengthen the competition slide in your deck",
 };
-const OBJECTIONS: Feature = {
+export const OBJECTIONS: Feature = {
   title: "Category objection playbook",
   detail:
     "The ten hardest questions investors in your category are asking founders right now, with evidence of investors raising them and drafted answers for you to rehearse",
 };
-const COMPARABLES: Feature = {
+export const COMPARABLES: Feature = {
   title: "Comparable rounds benchmark",
   detail:
     "Market data on 15 to 30 recent raises in your sector and stage, covering round size, instrument, and lead investors, so you know exactly where your ask sits relative to the market",
@@ -40,7 +40,7 @@ const ALIGNMENT: Feature = {
   detail: "matched profiles with thesis fit, check size, and sector focus",
   inline: true,
 };
-const ASYNC: Feature = {
+export const ASYNC: Feature = {
   title: "Async support",
   detail: "from our team throughout your engagement",
   inline: true,
@@ -107,7 +107,7 @@ const PACKAGES: {
   },
 ];
 
-function FeatureItem({ feature, onNavy }: { feature: Feature; onNavy: boolean }) {
+export function FeatureItem({ feature, onNavy }: { feature: Feature; onNavy: boolean }) {
   return (
     <li className="flex items-start gap-3">
       <span
@@ -152,6 +152,34 @@ function SideCard({
       <div className="mt-2 font-serif font-semibold leading-[1.15] text-navy">{title}</div>
       <p className="mt-2 font-sans text-[0.875rem] leading-[1.6] text-navy/60">{children}</p>
     </div>
+  );
+}
+
+export function JordanCard({ className = "" }: { className?: string }) {
+  return (
+    <div className={`rounded-[4px] border border-navy/10 bg-paper-tint px-6 py-8 text-center sm:px-8 sm:text-left ${className}`}>
+      <p className="eyebrow">Advisory partner</p>
+      <div className="relative mx-auto mt-5 h-28 w-28 overflow-hidden rounded-full bg-paper-deep sm:mx-0">
+        <Image src="/team/jordan.jpg" alt="Jordan Goldberg" fill sizes="112px" className="object-cover" />
+      </div>
+      <h2 className="mt-5 font-serif text-[1.35rem] font-semibold text-navy">Jordan Goldberg</h2>
+      <p className="mt-2 max-w-[48rem] font-sans text-[0.9375rem] leading-[1.65] text-navy/65">
+        Yale behavioral scientist, multi-exit founder, and fund manager (Frago Investments). Expert in narrative
+        strategy and human decision-making, helping you build the most compelling offer investors can&rsquo;t ignore.
+      </p>
+      <p className="mt-2 font-sans text-[0.8125rem] leading-[1.6] text-navy/50">
+        Additional advisory sessions beyond your package can be purchased at $500/hour.
+      </p>
+    </div>
+  );
+}
+
+export function DoubleOptInNote() {
+  return (
+    <p className="font-sans text-[0.9375rem] leading-[1.7] text-navy/60">
+      All introductions are <strong className="font-semibold text-gold-700">double opt-in</strong> and curated for
+      stage, sector, check size, and thesis alignment.
+    </p>
   );
 }
 
@@ -260,32 +288,11 @@ export function PackagesView({ withOffer = false }: { withOffer?: boolean }) {
           </div>
 
           <Reveal>
-            <div
-              className={`mt-6 rounded-[4px] border border-navy/10 bg-paper-tint px-6 py-8 text-center sm:px-8 sm:text-left ${
-                withOffer ? "" : "mx-auto max-w-[60rem]"
-              }`}
-            >
-              <p className="eyebrow">Advisory partner</p>
-              <div className="relative mx-auto mt-5 h-28 w-28 overflow-hidden rounded-full bg-paper-deep sm:mx-0">
-                <Image src="/team/jordan.jpg" alt="Jordan Goldberg" fill sizes="112px" className="object-cover" />
-              </div>
-              <h2 className="mt-5 font-serif text-[1.35rem] font-semibold text-navy">Jordan Goldberg</h2>
-              <p className="mt-2 max-w-[48rem] font-sans text-[0.9375rem] leading-[1.65] text-navy/65">
-                Yale behavioral scientist, multi-exit founder, and fund manager (Frago Investments). Expert in
-                narrative strategy and human decision-making, helping you build the most compelling offer investors
-                can&rsquo;t ignore.
-              </p>
-              <p className="mt-2 font-sans text-[0.8125rem] leading-[1.6] text-navy/50">
-                Additional advisory sessions beyond your package can be purchased at $500/hour.
-              </p>
-            </div>
+            <JordanCard className={`mt-6 ${withOffer ? "" : "mx-auto max-w-[60rem]"}`} />
           </Reveal>
 
           <div className="mx-auto mt-12 max-w-2xl text-center">
-            <p className="font-sans text-[0.9375rem] leading-[1.7] text-navy/60">
-              All introductions are <strong className="font-semibold text-gold-700">double opt-in</strong> and curated
-              for stage, sector, check size, and thesis alignment.
-            </p>
+            <DoubleOptInNote />
             {withOffer && (
               <p className="mt-3 font-sans text-[0.75rem] leading-[1.5] text-navy/40">
                 Money back guarantee provides a pro-rated refund on services not yet rendered as of the date of
