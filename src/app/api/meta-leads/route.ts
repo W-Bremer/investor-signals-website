@@ -64,8 +64,20 @@ async function fetchLead(leadgenId: string, pageId: string): Promise<Lead> {
   });
 }
 
+// Meta returns multiple-choice answers as option keys; map them back to the labels on the form.
+const OPTION_LABELS: Record<string, string> = {
+  gp: "Fund manager / GP",
+  lp_fo: "LP or family office",
+  hnwi: "Accredited investor / HNWI",
+  lender: "Lender",
+  founder: "Founder raising capital",
+  other: "Other",
+};
+
 function formatLead(lead: Lead) {
-  const f = Object.fromEntries(lead.field_data.map((d) => [d.name, d.values.join(", ")]));
+  const f = Object.fromEntries(
+    lead.field_data.map((d) => [d.name, d.values.map((v) => OPTION_LABELS[v] ?? v).join(", ")]),
+  );
   const name = f.full_name ?? "Unknown";
   const when = new Date(lead.created_time).toLocaleString("en-US", { timeZone: "America/New_York" });
   const lines = [
