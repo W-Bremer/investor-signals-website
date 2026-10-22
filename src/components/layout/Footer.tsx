@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsletterForm } from "@/components/forms/NewsletterForm";
 
 const NAVIGATE = [
   { href: "/for-startups", label: "For Startups" },
@@ -11,7 +12,7 @@ const NAVIGATE = [
 
 const LEGAL = [
   { href: "/request-an-introduction", label: "Contact" },
-  { href: "https://luma.com/3oei0twd", label: "Events", external: true },
+  { href: "/events", label: "Events" },
   { href: "/disclosures", label: "Disclosures" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
@@ -21,6 +22,20 @@ export function Footer() {
   return (
     <footer className="border-t border-navy/10 bg-paper-tint">
       <div className="container-edge pb-10 pt-16 md:pt-20">
+        <div className="mb-14 grid gap-8 border-b border-navy/10 pb-12 md:mb-16 md:grid-cols-12 md:gap-10 md:pb-14 lg:items-end">
+          <div className="md:col-span-5">
+            <p className="eyebrow mb-4">Newsletter</p>
+            <h2 className="font-serif text-display-sm font-semibold text-navy">Get the next issue.</h2>
+            <p className="mt-3 max-w-sm font-sans text-[0.9375rem] leading-relaxed text-navy/65">
+              Every week: what we are hearing from investors, what is working
+              in raises right now, and the data behind it.
+            </p>
+          </div>
+          <div className="md:col-span-7">
+            <NewsletterForm variant="inline" />
+          </div>
+        </div>
+
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
             <p className="font-serif text-[2rem] font-semibold leading-none text-navy md:text-[2.5rem]">

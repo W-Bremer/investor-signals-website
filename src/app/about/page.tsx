@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHead } from "@/components/sections/SectionHead";
@@ -6,6 +7,7 @@ import { ClosingCta } from "@/components/sections/ClosingCta";
 import { Reveal } from "@/components/motion/Reveal";
 import { TeamGrid } from "@/components/about/TeamGrid";
 import { ArrowRight } from "@/components/ui/icons";
+import { SIGNAL_NYC } from "@/lib/signal-nyc";
 
 export const metadata: Metadata = {
   title: "About",
@@ -79,8 +81,24 @@ export default function AboutPage() {
             label="The team"
             title="The people behind the network"
             lede="Every introduction we make carries one of these names with it. That is the whole model: a network built by hand, by people who answer for it."
-            className="mb-16"
+            className="mb-12"
           />
+          <Reveal className="mb-16">
+            <figure>
+              <div className="relative aspect-[3/2] overflow-hidden bg-paper-deep">
+                <Image
+                  src={SIGNAL_NYC.team.src}
+                  alt={SIGNAL_NYC.team.alt}
+                  fill
+                  sizes="(min-width: 1200px) 1100px, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-4 font-sans text-[0.875rem] text-navy/55">
+                The Investor Signals team at Signal NYC, Hudson Yards
+              </figcaption>
+            </figure>
+          </Reveal>
           <TeamGrid />
         </div>
       </section>

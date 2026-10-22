@@ -90,6 +90,14 @@ export function Header() {
             ),
           )}
           <Link
+            href="/newsletter"
+            className={`link-quiet font-sans text-[0.9375rem] font-semibold transition-colors duration-300 ${
+              pathname === "/newsletter" ? "text-navy" : "text-navy/75 hover:text-navy"
+            }`}
+          >
+            Subscribe
+          </Link>
+          <Link
             href="/request-an-introduction"
             className="rounded-[2px] border border-navy/30 px-5 py-2.5 font-sans text-[0.875rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy hover:text-paper"
           >
@@ -167,6 +175,13 @@ export function Header() {
               className="inline-block w-full rounded-[2px] bg-navy px-7 py-4 text-center font-sans text-[0.9375rem] font-semibold text-paper"
             >
               Request an Introduction
+            </Link>
+            <Link
+              href="/newsletter"
+              tabIndex={open ? 0 : -1}
+              className="mt-3 inline-block w-full rounded-[2px] border border-navy/30 px-7 py-4 text-center font-sans text-[0.9375rem] font-semibold text-navy"
+            >
+              Subscribe to the newsletter
             </Link>
             <p className="pt-6 font-sans text-sm text-navy/55">
               Investor Signals LLC. Miami, Florida.

@@ -7,6 +7,8 @@ type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "outline" | "onNavy";
   className?: string;
+  /** Opens an off-site link in a new tab. */
+  external?: boolean;
 };
 
 const styles = {
@@ -18,14 +20,21 @@ const styles = {
     "bg-paper text-navy hover:bg-ivory focus-visible:outline-paper",
 } as const;
 
-export function Button({ href, children, variant = "primary", className = "" }: ButtonProps) {
-  return (
-    <Link
-      href={href}
-      className={`link-arrow group inline-flex items-center gap-3 rounded-[2px] px-7 py-[1.05rem] font-sans text-[0.9375rem] font-semibold tracking-[0.01em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${styles[variant]} ${className}`}
-    >
+export function Button({ href, children, variant = "primary", className = "", external = false }: ButtonProps) {
+  const cls = `link-arrow group inline-flex items-center gap-3 rounded-[2px] px-7 py-[1.05rem] font-sans text-[0.9375rem] font-semibold tracking-[0.01em] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${styles[variant]} ${className}`;
+  const inner = (
+    <>
       <span>{children}</span>
       <ArrowRight className="arrow-slide h-[0.85em] w-[0.85em] opacity-80" />
+    </>
+  );
+  return external ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+      {inner}
+    </a>
+  ) : (
+    <Link href={href} className={cls}>
+      {inner}
     </Link>
   );
 }

@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/blog",
     ...POSTS.map((post) => `/blog/${post.slug}`),
+    "/events",
+    "/newsletter",
     "/faq",
     "/request-an-introduction",
     "/disclosures",

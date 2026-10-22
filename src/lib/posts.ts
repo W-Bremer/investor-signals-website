@@ -6,10 +6,31 @@ export type Post = {
   date: string;
   readingTime: string;
   tag: string;
+  /** Meta description, when it should differ from the card summary. */
+  seoDescription?: string;
+  /** Header image, served from /public. Also used for social cards. */
+  image?: { src: string; alt: string; width: number; height: number };
 };
 
 /** Newest first. Add each week's post to the top of this list. */
 export const POSTS: Post[] = [
+  {
+    slug: "signal-nyc-and-the-10-percent-problem",
+    title: "Investors don't fund pitches. They fund people they already know.",
+    description:
+      "Signal NYC recap, plus why only 1 in 10 VC deals come in cold and three things to do before your next raise.",
+    seoDescription:
+      "Only 10% of VC deals come inbound from founders. What that means for your next raise, from the Investor Signals newsletter.",
+    date: "2026-10-21",
+    readingTime: "5 min read",
+    tag: "Newsletter · Issue 01",
+    image: {
+      src: "/signal-nyc/signal-nyc-team.jpg",
+      alt: "Signal NYC, Reserve Padel Hudson Yards: Investor Signals team in front of the step-and-repeat banner",
+      width: 2000,
+      height: 1333,
+    },
+  },
   {
     slug: "the-investor-relations-playbook",
     title: "The Investor Relations Playbook for Early-Stage Founders",

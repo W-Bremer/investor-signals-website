@@ -4,6 +4,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
+import { NewsletterCta } from "@/components/sections/NewsletterCta";
+import { ClosingCta } from "@/components/sections/ClosingCta";
 import { getPost } from "@/lib/posts";
 
 const post = getPost("the-investor-relations-playbook")!;
@@ -735,6 +737,9 @@ export default function PlaybookPage() {
           </div>
         </div>
       </article>
+
+      <NewsletterCta />
+      <ClosingCta />
     </>
   );
 }

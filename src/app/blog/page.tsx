@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { ClosingCta } from "@/components/sections/ClosingCta";
@@ -38,6 +39,18 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group block border-t border-navy/10 py-10 first:border-t-0 first:pt-0 md:py-12"
               >
+                {i === 0 && post.image && (
+                  <div className="relative mb-10 aspect-[21/9] overflow-hidden bg-paper-deep">
+                    <Image
+                      src={post.image.src}
+                      alt={post.image.alt}
+                      fill
+                      priority
+                      sizes="(min-width: 1200px) 1100px, 100vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
                 <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
                   <div className="lg:col-span-3">
                     <p className="eyebrow">{post.tag}</p>

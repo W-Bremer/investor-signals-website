@@ -5,6 +5,7 @@ import { Deliverables } from "@/components/home/Deliverables";
 import { AudienceSplit } from "@/components/home/AudienceSplit";
 import { ModelSection } from "@/components/home/ModelSection";
 import { FaqPreview } from "@/components/home/FaqPreview";
+import { SignalTourBand } from "@/components/home/SignalTourBand";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
       <AudienceSplit />
       <ModelSection />
       <FaqPreview />
+      <SignalTourBand />
       <ClosingCta />
     </>
   );
