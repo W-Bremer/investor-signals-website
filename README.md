@@ -21,7 +21,8 @@ headlines, restrained motion.
 (post registry in `src/lib/posts.ts`, newest first; Newsletter Issue 01
 leads, then the playbook), `/events` (the Signal Tour cards and the
 Signal NYC gallery; photos and event data in `src/lib/signal-nyc.ts`),
-`/newsletter` (subscribe page), `/faq`, `/request-an-introduction`
+`/newsletter` (subscribe page), `/sms-opt-in` (text message consent),
+`/faq`, `/request-an-introduction`
 (booking calendar + form), plus `/disclosures`, `/privacy`, `/terms`
 and a designed 404.
 
@@ -55,6 +56,18 @@ to `/api/newsletter`, which upserts the contact in GHL and adds the tag
 `newsletter subscriber` using `GHL_API_KEY` (+ `GHL_LOCATION_ID` for API
 v2). Without GHL configured, sign-ups are emailed to `REQUEST_INBOX`
 through Resend so nothing is lost.
+
+## Text message (SMS) opt-in
+
+`/sms-opt-in` is the public consent page (the route email leads can be
+sent to), and the inquiry form carries an optional mobile field with the
+same unchecked consent box. Both post a consent record (name, email, E.164
+number, UTC timestamp, disclosure version, page, IP, user agent, and the
+disclosure text verbatim) which `src/lib/sms-consent.ts` stores on the GHL
+contact (phone, `sms consent` tag, timeline note) and emails to
+`REQUEST_INBOX`. The program copy, disclosure version and support inbox are
+in `src/lib/sms.ts`; bump `SMS_DISCLOSURE_VERSION` whenever the consent
+text changes. `/privacy` and `/terms` describe the program.
 
 ## Signal NYC photos
 

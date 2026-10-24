@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/newsletter",
     "/faq",
     "/request-an-introduction",
+    "/sms-opt-in",
     "/disclosures",
     "/privacy",
     "/terms",

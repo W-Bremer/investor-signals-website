@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { normalizePhone, optionalPhoneSchema } from "@/lib/sms";
 
 export const AUDIENCES = ["startup", "fund-manager"] as const;
 
@@ -29,8 +30,16 @@ export const introductionRequestSchema = z.object({
     .optional()
     .or(z.literal("")),
   notes: z.string().trim().max(4000).optional().or(z.literal("")),
+  // Optional mobile number; only used for texts when smsConsent is true.
+  phone: optionalPhoneSchema,
+  smsConsent: z.boolean().optional(),
+  disclosureVersion: z.string().trim().max(40).optional().or(z.literal("")),
+  pageUrl: z.string().trim().max(500).optional().or(z.literal("")),
   // Honeypot: humans never see or fill this field.
   website: z.string().max(0).optional().or(z.literal("")),
+}).refine((d) => !d.smsConsent || (d.phone && normalizePhone(d.phone) !== null), {
+  message: "Add your mobile number to opt in to texts, or leave the box unchecked.",
+  path: ["phone"],
 });
 
 export type IntroductionRequest = z.infer<typeof introductionRequestSchema>;

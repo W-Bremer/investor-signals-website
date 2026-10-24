@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { introductionRequestSchema, type IntroductionRequest } from "@/lib/introduction-request";
+import { normalizePhone } from "@/lib/sms";
+import { formatConsentRecord, recordSmsConsent, requestMeta, type SmsConsentRecord } from "@/lib/sms-consent";
 
 export const runtime = "nodejs";
 
 const FRIENDLY_FAILURE =
   "We could not send your request just now. Please try again shortly.";
 
-function formatEmail(d: IntroductionRequest): string {
+function formatEmail(d: IntroductionRequest, consent: SmsConsentRecord | null): string {
   const kind = d.audience === "startup" ? "Startup raise" : "Fund raise";
   const lines = [
     `New introduction request from investorsignals.co`,
@@ -20,9 +22,14 @@ function formatEmail(d: IntroductionRequest): string {
     `Amount:      ${d.amount}`,
     `Sector:      ${d.sector}`,
     `Deck:        ${d.deckUrl || "not provided"}`,
+    `Mobile:      ${d.phone ? normalizePhone(d.phone) ?? d.phone : "not provided"}`,
+    `SMS consent: ${consent ? "YES, see record below" : "no"}`,
   ];
   if (d.notes) {
     lines.push(``, `Notes:`, d.notes);
+  }
+  if (consent) {
+    lines.push(``, `SMS consent record (keep as evidence of the opt-in):`, ``, formatConsentRecord(consent));
   }
   return lines.join("\n");
 }
@@ -57,6 +64,29 @@ export async function POST(request: Request) {
   }
 
   const d = parsed.data;
+  const phone = d.phone ? normalizePhone(d.phone) : null;
+  const meta = requestMeta(request);
+  const consent: SmsConsentRecord | null =
+    d.smsConsent && phone
+      ? {
+          name: d.name,
+          email: d.email,
+          phone,
+          consentedAt: new Date().toISOString(),
+          disclosureVersion: d.disclosureVersion || "unknown",
+          source: "request-an-introduction",
+          pageUrl: d.pageUrl || meta.referer,
+          ip: meta.ip,
+          userAgent: meta.userAgent,
+        }
+      : null;
+  if (consent) {
+    // The request email below carries the record too, so a GHL hiccup never
+    // loses the evidence.
+    const stored = await recordSmsConsent(consent);
+    if (stored.ghl === "failed") console.error("request-introduction: SMS consent not stored in GHL");
+  }
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -69,7 +99,7 @@ export async function POST(request: Request) {
       ...(process.env.REQUEST_CC ? { cc: process.env.REQUEST_CC.split(",").map((s) => s.trim()) } : {}),
       reply_to: d.email,
       subject: `Introduction request: ${d.company} (${d.audience === "startup" ? "startup" : "fund manager"})`,
-      text: formatEmail(d),
+      text: formatEmail(d, consent),
     }),
   }).catch((err: unknown) => {
     console.error("request-introduction: email send threw:", err);

@@ -1,81 +1,18 @@
 import { NextResponse } from "next/server";
 import { NEWSLETTER_TAG, newsletterSignupSchema, type NewsletterSignup } from "@/lib/newsletter";
+import { addTags, ghlConfigured, upsertContact } from "@/lib/ghl";
 
 export const runtime = "nodejs";
 
 const FRIENDLY_FAILURE = "We could not add you just now. Please try again shortly.";
 const SOURCE = "investorsignals.co newsletter";
 
-type ContactResponse = { contact?: { id?: string } } | null;
-
-/**
- * Creates or updates the contact in GHL and adds the newsletter tag.
- *
- * Two credential shapes are supported:
- *  - GHL_API_KEY + GHL_LOCATION_ID: a Private Integration token (API v2,
- *    Settings > Private Integrations, scopes contacts.readonly + contacts.write).
- *  - GHL_API_KEY alone: the legacy location API key (API v1, Settings >
- *    Business Profile).
- *
- * The tag is added with the dedicated tags endpoint rather than passed on the
- * upsert, so tags already on an existing contact are never replaced.
- */
+/** Creates or updates the contact and adds the newsletter tag. */
 async function addToGhl(d: NewsletterSignup): Promise<"ok" | "failed" | "unconfigured"> {
-  const token = process.env.GHL_API_KEY;
-  if (!token) return "unconfigured";
-  const locationId = process.env.GHL_LOCATION_ID;
-
-  const base = locationId ? "https://services.leadconnectorhq.com" : "https://rest.gohighlevel.com/v1";
-  const headers: Record<string, string> = {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    // GHL sits behind Cloudflare, which answers error 1010 to requests
-    // without a recognisable User-Agent.
-    "User-Agent": "investorsignals.co/1.0 (newsletter)",
-    ...(locationId ? { Version: "2021-07-28" } : {}),
-  };
-
-  const upsert = await fetch(locationId ? `${base}/contacts/upsert` : `${base}/contacts/`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({
-      ...(locationId ? { locationId } : {}),
-      firstName: d.firstName,
-      email: d.email,
-      source: SOURCE,
-    }),
-  }).catch((err: unknown) => {
-    console.error("newsletter: GHL upsert threw:", err);
-    return null;
-  });
-
-  if (!upsert || !upsert.ok) {
-    if (upsert) console.error("newsletter: GHL upsert failed:", upsert.status, await upsert.text().catch(() => ""));
-    return "failed";
-  }
-
-  const body = (await upsert.json().catch(() => null)) as ContactResponse;
-  const id = body?.contact?.id;
-  if (!id) {
-    console.error("newsletter: GHL upsert returned no contact id:", JSON.stringify(body));
-    return "failed";
-  }
-
-  const tag = await fetch(`${base}/contacts/${id}/tags${locationId ? "" : "/"}`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({ tags: [NEWSLETTER_TAG] }),
-  }).catch((err: unknown) => {
-    console.error("newsletter: GHL tag threw:", err);
-    return null;
-  });
-
-  if (!tag || !tag.ok) {
-    if (tag) console.error("newsletter: GHL tag failed:", tag.status, await tag.text().catch(() => ""));
-    return "failed";
-  }
-  return "ok";
+  if (!ghlConfigured()) return "unconfigured";
+  const id = await upsertContact({ email: d.email, firstName: d.firstName, source: SOURCE });
+  if (!id) return "failed";
+  return (await addTags(id, [NEWSLETTER_TAG])) ? "ok" : "failed";
 }
 
 /** Fallback when GHL is not configured: email the sign-up to the request inbox. */

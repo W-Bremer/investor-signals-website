@@ -12,6 +12,7 @@ const NAVIGATE = [
 
 const LEGAL = [
   { href: "/request-an-introduction", label: "Contact" },
+  { href: "/sms-opt-in", label: "Text messages" },
   { href: "/events", label: "Events" },
   { href: "/disclosures", label: "Disclosures" },
   { href: "/privacy", label: "Privacy" },

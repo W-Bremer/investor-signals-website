@@ -2,7 +2,9 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { AUDIENCES, FUND_STAGES, STARTUP_STAGES } from "@/lib/introduction-request";
+import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons";
+import { SmsConsentField } from "@/components/forms/SmsConsentField";
 
 type Audience = (typeof AUDIENCES)[number];
 type Status = "idle" | "submitting" | "success";
@@ -61,13 +63,18 @@ export function IntroductionForm() {
     e.preventDefault();
     setError(null);
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
     setStatus("submitting");
     try {
       const res = await fetch("/api/request-introduction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, audience }),
+        body: JSON.stringify({
+          ...data,
+          audience,
+          smsConsent: data.smsConsent === "on",
+          pageUrl: window.location.href,
+        }),
       });
       const body = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (res.ok && body?.ok) {
@@ -201,6 +208,30 @@ export function IntroductionForm() {
             className="field-input resize-y"
             placeholder="Where does the raise stand? Timeline, traction, anything we should read first."
           />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="f-phone" className="field-label">
+            Mobile number (optional)
+          </label>
+          <input
+            id="f-phone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            className="field-input"
+            placeholder="(305) 555-0100"
+          />
+        </div>
+        <div className="md:col-span-2">
+          <SmsConsentField />
+          <p className="mt-3 font-sans text-[0.8125rem] leading-relaxed text-navy/50">
+            Texts are optional and separate from your request. Already in
+            touch with us? You can also opt in on the{" "}
+            <Link href="/sms-opt-in" className="font-semibold text-navy underline decoration-gold-500/60 underline-offset-4 hover:decoration-gold-600">
+              text message opt-in page
+            </Link>
+            .
+          </p>
         </div>
       </div>
 
