@@ -15,6 +15,17 @@ export type Post = {
 /** Newest first. Add each week's post to the top of this list. */
 export const POSTS: Post[] = [
   {
+    slug: "the-87-5-percent-problem",
+    title: "The 87.5% problem",
+    description:
+      "Megadeals took 87.5% of US venture dollars in the first half of 2026. What that means if you are raising below the $100M line, and a six-step playbook for doing it.",
+    seoDescription:
+      "87.5% of US venture dollars went to $100M+ rounds in H1 2026. How to raise below the megadeal line, from the Investor Signals newsletter.",
+    date: "2026-10-28",
+    readingTime: "6 min read",
+    tag: "Newsletter · Issue 02",
+  },
+  {
     slug: "signal-nyc-and-the-10-percent-problem",
     title: "Investors don't fund pitches. They fund people they already know.",
     description:
