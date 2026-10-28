@@ -132,6 +132,24 @@ const articleJsonLd = {
   publisher: { "@type": "Organization", name: "Investor Signals LLC" },
 };
 
+/** Bar widths follow the email's chart: share of the row's available width. */
+const SEED_CHART: { label: string; rows: { year: string; value: ReactNode; share: number; color: string; emphasis: boolean }[] }[] = [
+  {
+    label: "Dollars raised",
+    rows: [
+      { year: "2025", value: "$2.2B", share: 66, color: "bg-navy-200", emphasis: false },
+      { year: "2026", value: <>$2.7B <span className="text-gold-600">▲</span></>, share: 81, color: "bg-navy", emphasis: true },
+    ],
+  },
+  {
+    label: "Companies funded",
+    rows: [
+      { year: "2025", value: "481", share: 81, color: "bg-navy-200", emphasis: false },
+      { year: "2026", value: <>381 <span className="text-navy/50">▼</span></>, share: 64, color: "bg-gold-500", emphasis: true },
+    ],
+  },
+];
+
 const STEPS: { lead: string; body: ReactNode }[] = [
   {
     lead: "Find who’s actually writing checks at your size.",
@@ -273,7 +291,16 @@ export default function IssueTwoPage() {
                 deployed in US venture in H1 2026, and AI alone took 86% of the
                 dollars (<Ext href={PITCHBOOK_URL}>PitchBook-NVCA Venture Monitor</Ext>).
               </P>
-              <P>Read that again.</P>
+              <p className="mb-4 font-serif text-[1.25rem] italic text-navy">Read that again.</p>
+              <div className="mb-4 flex flex-wrap gap-1.5" role="img" aria-label="Eight coins, one of them gold: one dollar in eight">
+                {Array.from({ length: 8 }, (_, i) => (
+                  <span
+                    key={i}
+                    aria-hidden
+                    className={`block h-[26px] w-[26px] rounded-full ${i === 7 ? "bg-gold-500" : "bg-navy"}`}
+                  />
+                ))}
+              </div>
               <P>
                 Roughly <B>one dollar in eight</B> went to every round under
                 $100 million combined.
@@ -289,32 +316,27 @@ export default function IssueTwoPage() {
               </P>
 
               <div className="my-8 border border-navy/10 bg-paper-tint px-6 py-6 md:px-8">
-                <p className="eyebrow mb-5">Seed rounds on Carta, Q1</p>
-                <table className="w-full font-sans text-[1rem]">
-                  <thead>
-                    <tr className="text-left text-[0.75rem] uppercase tracking-[0.14em] text-navy/45">
-                      <th className="pb-3 font-semibold"></th>
-                      <th className="pb-3 text-right font-semibold">2025</th>
-                      <th className="pb-3 text-right font-semibold">2026</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-navy/10">
-                    <tr>
-                      <td className="py-3 text-navy/70">Dollars raised</td>
-                      <td className="py-3 text-right tabular-nums text-navy">$2.2B</td>
-                      <td className="py-3 text-right tabular-nums font-semibold text-navy">
-                        $2.7B <span className="text-gold-600">▲</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-navy/70">Companies funded</td>
-                      <td className="py-3 text-right tabular-nums text-navy">481</td>
-                      <td className="py-3 text-right tabular-nums font-semibold text-navy">
-                        381 <span className="text-navy/50">▼</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <p className="mb-5 font-sans text-[0.875rem] font-semibold text-navy">Seed rounds on Carta, Q1</p>
+                {SEED_CHART.map((group) => (
+                  <div key={group.label} className="mb-5 last:mb-0">
+                    <p className="mb-2 font-sans text-[0.6875rem] uppercase tracking-[0.14em] text-navy/50">{group.label}</p>
+                    <div className="space-y-2">
+                      {group.rows.map((r) => (
+                        <div key={r.year} className="flex items-center gap-3">
+                          <span className={`w-12 shrink-0 font-sans text-[0.875rem] tabular-nums ${r.emphasis ? "font-semibold text-navy" : "text-navy/55"}`}>
+                            {r.year}
+                          </span>
+                          <div className="flex min-w-0 flex-1 items-center gap-2.5">
+                            <div className={`h-[18px] rounded-[2px] ${r.color}`} style={{ width: `${r.share}%` }} />
+                            <span className={`shrink-0 font-sans text-[0.875rem] tabular-nums ${r.emphasis ? "font-semibold text-navy" : "text-navy/65"}`}>
+                              {r.value}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
                 <Source href={CARTA_URL}>Carta</Source>
               </div>
 
